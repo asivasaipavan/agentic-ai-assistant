@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Agentic AI Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h1>🤖 Agentic AI Assistant</h1>
+    <div id="chat-box"></div>
+    <div class="input-area">
+        <input type="text" id="message" placeholder="Ask something...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+</div>
+
+<script>
+async function sendMessage(){
+    const input = document.getElementById('message');
+    const msg = input.value.trim();
+    if(!msg) return;
+
+    const box = document.getElementById('chat-box');
+    box.innerHTML += `<div class='user'><b>You:</b> ${msg}</div>`;
+    input.value='';
+
+    const res = await fetch('/chat',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({message:msg})
+    });
+
+    const data = await res.json();
+    box.innerHTML += `<div class='bot'><b>Bot:</b> ${data.reply}</div>`;
+    box.scrollTop = box.scrollHeight;
+}
+</script>
+</body>
+</html>

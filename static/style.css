@@ -1,0 +1,9 @@
+body{font-family:Arial,sans-serif;background:#f0f2f5}
+.container{width:70%;margin:40px auto;background:white;padding:20px;border-radius:10px}
+#chat-box{height:400px;overflow-y:auto;border:1px solid #ddd;padding:10px;margin-bottom:15px}
+.user,.bot{padding:10px;margin:8px 0;border-radius:8px}
+.user{background:#d1e7ff}
+.bot{background:#e8e8e8}
+.input-area{display:flex;gap:10px}
+input{flex:1;padding:10px}
+button{padding:10px 20px;cursor:pointer}
